@@ -1,6 +1,8 @@
 <script>
   $: currentnumber = 0;
   $: previousoperation = "";
+  let previousnumber = "";
+  let operator = "";
 
   function addNumber() {
     if (currentnumber.length == "16") {
@@ -21,9 +23,33 @@
     }
   }
 
-  function createOperation(operation) {
-    previousoperation = currentnumber + " " + operation;
+  function createOperation(newoperator) {
+    if (newoperator == "÷") {
+      newoperator = "/";
+    }
+    operator = newoperator;
+    previousoperation = currentnumber + " " + operator;
+    previousnumber = currentnumber;
     currentnumber = 0;
+  }
+
+  function equalsButton() {
+    if (operator == "+") {
+      previousoperation = "";
+      currentnumber = Number(previousnumber) + Number(currentnumber);
+    }
+    if (operator == "-") {
+      previousoperation = "";
+      currentnumber = Number(previousnumber) - Number(currentnumber);
+    }
+    if (operator == "*") {
+      previousoperation = "";
+      currentnumber = Number(previousnumber) * Number(currentnumber);
+    }
+    if (operator == "/") {
+      previousoperation = "";
+      currentnumber = Number(previousnumber) / Number(currentnumber);
+    }
   }
 </script>
 
@@ -32,12 +58,14 @@
   <p id="currentnumber">{currentnumber}</p>
 </div>
 <div id="grid">
+  <button class="operation" on:click={() => (currentnumber = 0)}>CE</button>
   <button
     class="operation"
     on:click={() => (currentnumber = 0)}
-    on:click={() => (previousoperation = "")}>CE</button
+    on:click={() => (previousoperation = "")}
+    on:click={() => (previousnumber = "")}
+    on:click={() => (operator = "")}>C</button
   >
-  <button class="operation" on:click={() => (currentnumber = 0)}>C</button>
 
   <button class="operation" on:click={() => delnumber()}>DEL</button>
 
@@ -57,5 +85,5 @@
   <button class="number" on:click={() => addNumber(event)}>⁺∕₋</button>
   <button class="number" on:click={() => addNumber(event)}>.</button>
   <button class="number" on:click={() => addNumber(event)}>0</button>
-  <button class="operation">=</button>
+  <button class="operation" on:click={() => equalsButton()}>=</button>
 </div>
