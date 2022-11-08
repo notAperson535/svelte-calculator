@@ -50,6 +50,9 @@
       previousoperation = "";
       currentnumber = Number(previousnumber) / Number(currentnumber);
     }
+    if (currentnumber == infinity){
+      currentnumber = Calculation outside of expected range
+    }
   }
 </script>
 
