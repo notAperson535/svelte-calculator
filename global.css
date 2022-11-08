@@ -1,0 +1,76 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+@font-face {
+	font-family: 'Segoe UI Variable';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Segoe UI Variable'), url('https://fonts.cdnfonts.com/s/63254/SegoeUIVF.woff') format('woff');
+}
+
+* {
+	font-family: Segoe UI Variable, Segoe UI;
+}
+
+#output {
+	width: 100%;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	justify-content: center;
+	padding: 0px 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+	box-sizing: border-box;
+}
+
+#previousoperation {
+	font-size: 15px;
+	color: grey;
+	margin: 0;
+	height: 30px;
+}
+
+#currentnumber {
+	font-size: 40px;
+	margin: 0;
+	height: 60px;
+}
+
+#grid {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto;
+	grid-gap: 2px;
+	width: 100%;
+	height: calc(100% - 150px);
+}
+
+#grid button {
+	font-size: 100%;
+	border: 1px solid rgba(0, 0, 0, .1);
+	border-radius: 4px;
+}
+
+#grid button.number,
+#grid button.operation:hover {
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(20px) saturate (3px);
+}
+
+#grid button.operation,
+#grid button.number:hover {
+	background: rgba(249, 249, 249, 0.8);
+	backdrop-filter: blur(20px) saturate (3px);
+}
